@@ -29,3 +29,10 @@ This library folds at existing whitespace where possible, and when a single toke
 - **Input must not contain `\r` or `\n`.** Pass one logical line at a time. The library does not parse a full header block.
 - **Hard breaks inside long tokens.** A 200-character word with no spaces will be split at the 78-character boundary. There is no way to avoid this while staying within the limit.
 - **`max_len` must be at least 3.** Smaller values cannot hold a continuation line (one leading space plus at least one payload character plus the fold marker context).
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
