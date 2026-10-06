@@ -1,6 +1,6 @@
 [project]
 name = "crlf-line-folder"
-version = "0.1.0"
+version = "0.1.1"
 description = "Folds long header lines to 78 characters per RFC 5322 with proper whitespace-folding semantics."
 requires-python = ">=3.10"
 dependencies = []
